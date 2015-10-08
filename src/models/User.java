@@ -1,11 +1,7 @@
 package models;
 
-import static com.google.common.base.MoreObjects.toStringHelper;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 import com.google.common.base.Objects;
+import static com.google.common.base.MoreObjects.toStringHelper;
 
 public class User 
 {
@@ -13,15 +9,9 @@ public class User
 	public String lastName;
 	public String email;
 	public String password;
-	private Map<String, User> users = new HashMap<>();
 
 	public User()
 	{
-	}
-
-	public Collection<User> getUsers ()
-	{
-		return users.values();
 	}
 
 	public User(String firstName, String lastName, String email, String password)
@@ -30,23 +20,6 @@ public class User
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-	}
-
-	public User createUser(String firstName, String lastName, String email, String password) 
-	{
-		User user = new User (firstName, lastName, email, password);
-		users.put(email, user);
-		return user;
-	}
-
-	public User getUser(String email) 
-	{
-		return users.get(email);
-	}
-
-	public void deleteUser(String email) 
-	{
-		users.remove(email);
 	}
 
 	@Override  
