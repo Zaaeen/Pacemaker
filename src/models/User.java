@@ -5,6 +5,7 @@ import static com.google.common.base.MoreObjects.toStringHelper;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import com.google.common.base.Objects;
 
 public class User 
 {
@@ -12,7 +13,7 @@ public class User
 	public String lastName;
 	public String email;
 	public String password;
-	private Map<String, User> users = new HashMap<String, User>();
+	private Map<String, User> users = new HashMap<>();
 
 	public User()
 	{
@@ -48,6 +49,13 @@ public class User
 		users.remove(email);
 	}
 
+	@Override  
+	public int hashCode()  
+	{  
+		return Objects.hashCode(this.lastName, this.firstName, this.email, this.password);  
+	}  
+
+	@Override
 	public String toString()
 	{
 		return toStringHelper(this).addValue(firstName)
